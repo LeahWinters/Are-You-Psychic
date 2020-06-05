@@ -6,7 +6,6 @@ class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameStarted: false,
       name: "",
       difficulty: "easy",
       inputFields: true,
@@ -25,7 +24,6 @@ class LandingPage extends Component {
     }
     this.props.startGame(this.state.name, this.state.difficulty);
     this.setState({ gameStarted: true });
-    // Router.push('/game-page')
   };
 
   render() {
@@ -48,10 +46,11 @@ class LandingPage extends Component {
             name="difficulty"
             value={this.state.difficulty}
             onChange={this.handleChange}
+            className="select-diff"
           >
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Hard</option>
+            <option value="Harry Potter">Harry Potter - Easy - Red/Black</option>
+            <option value="The Magicians">The Magicians - Medium - Suits</option>
+            <option value="Hard">HP Love Craft - Hard - Exact Match</option>
           </select>
           <Link to={`/game-page`}>
             <button

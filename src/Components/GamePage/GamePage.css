@@ -1,0 +1,64 @@
+.game-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-holder {
+    display: flex;
+    flex-direction: row;
+    height: 75%;
+}
+
+.users-prediction-card-holder {
+    border: solid 1px blue;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.users-prediction-card {
+    border: solid 1px pink;
+    width: 45%;
+    height: 45%;
+}
+
+.card-to-predict-holder {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: solid 1px red;
+    width: 50%;
+    height: 100%;
+}
+
+.card-to-predict {
+    border: solid 1px pink;
+    width: 45%;
+    height: 45%;
+}
+
+.user-prediction-form {
+    border: solid 1px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 13%;
+}
+
+.select-color {
+    cursor: pointer;
+    width: 18%;
+    height: 50%;
+    font-size: 1.3em;
+}
+
+.predict-btn {
+    cursor: pointer;
+    width: 14%;
+    height: 50%;
+    font-size: 1.2em;
+}
