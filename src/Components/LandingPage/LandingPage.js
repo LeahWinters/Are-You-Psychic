@@ -6,7 +6,6 @@ class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameStarted: false,
       name: "",
       difficulty: "easy",
       inputFields: true,
@@ -25,7 +24,6 @@ class LandingPage extends Component {
     }
     this.props.startGame(this.state.name, this.state.difficulty);
     this.setState({ gameStarted: true });
-    // Router.push('/game-page')
   };
 
   render() {

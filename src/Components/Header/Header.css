@@ -1,11 +1,15 @@
 .Header {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: 10%;
 }
 
 .game-title {
+    font-size: 2em;
 }
 
 .card-count {
+    font-size: 1.5em;
 }
