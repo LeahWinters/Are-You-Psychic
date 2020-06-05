@@ -3,6 +3,7 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage.js";
 import GamePage from "../GamePage/GamePage.js";
+import { getTenCards } from "../../apiCall";
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class App extends Component {
       name: "",
       difficulty: "",
       gameStarted: false,
+      cards: []
     };
   }
 
@@ -18,6 +20,12 @@ class App extends Component {
     this.setState({name, difficulty, gameStarted: true})
     console.log(this.state.name, this.state.difficulty, this.state.gameStarted)
   };
+
+  componentDidMount = async () => {
+    const cards = await getTenCards();
+    this.setState({...this.state, allCards: cards});
+    console.log(this.state.cards)
+  }
 
   render() {
     console.log(this.state.name, this.state.difficulty, this.state.gameStarted)
