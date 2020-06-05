@@ -12,7 +12,7 @@ class App extends Component {
       name: "",
       difficulty: "",
       gameStarted: false,
-      cards: []
+      allCards: []
     };
   }
 
@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount = async () => {
     const cards = await getTenCards();
     this.setState({...this.state, allCards: cards});
-    console.log(this.state.cards)
+    console.log(this.state.allCards)
   }
 
   render() {
