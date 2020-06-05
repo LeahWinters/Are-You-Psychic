@@ -3,6 +3,7 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage.js";
 import GamePage from "../GamePage/GamePage.js";
+import Header from "../Header/Header.js"
 import { getTenCards } from "../../apiCall";
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
             exact path="/game-page"
             component={() => (
               <div className="game-page">
+                <Header playerName={this.state.name} />
                 <GamePage />
               </div>
             )}
