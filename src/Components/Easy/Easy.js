@@ -10,18 +10,17 @@ class Easy extends Component {
   }
 
   componentDidMount = () => {
-    this.setUpCard()
+    this.setUpCard();
   };
 
 handleSubmit = () => {
-    this.props.advanceRound()
+    this.props.advanceRound();
  }
 
 
  setUpCard = async () => {
     let currentCard = await this.props.allCards.cards[this.props.currentRound];
     this.setState({currentCard: currentCard}) 
-
  }
 
  
@@ -36,9 +35,9 @@ handleSubmit = () => {
             </div>
           </section>
           <section className='card-to-predict-holder'>
-            <div className='card-to-predict'>
-                {this.state.currentCard.code}
-            </div>
+            <img className='card-to-predict' src={this.state.currentCard.image}/>
+                
+            
           </section>
         </div>
         <form className="user-prediction-form">
