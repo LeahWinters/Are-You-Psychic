@@ -13,11 +13,6 @@ class Medium extends Component {
     return (
       <div className='medium-game-page'>
         <div className="cards-holder">
-          <section className='users-prediction-card-holder'>
-            <div className='users-prediction-card'>
-
-            </div>
-          </section>
           <section className='card-to-predict-holder'>
             <div className='card-to-predict'>
 

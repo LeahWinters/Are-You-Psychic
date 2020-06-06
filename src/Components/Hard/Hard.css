@@ -10,26 +10,11 @@
     height: 75%;
 }
 
-.users-prediction-card-holder {
-    border: solid 1px blue;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.users-prediction-card {
-    border: solid 1px pink;
-    width: 45%;
-    height: 45%;
-}
-
 .card-to-predict-holder {
     align-items: center;
     display: flex;
     justify-content: center;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     width: 50%;
     height: 100%;
 }
