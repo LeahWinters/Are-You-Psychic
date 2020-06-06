@@ -32,15 +32,20 @@ class App extends Component {
 
   advanceRound = () => {
     this.state.round++;
+    this.forceReRender()
+  }
+
+  forceReRender = () => {
+    this.setState({...this.state})
   }
 
   render() {
     let version = null
-    if(this.state.difficulty === 'easy'){
+    if (this.state.difficulty === 'easy') {
       version = <Easy allCards={this.state.allCards} advanceRound={this.advanceRound}/>
-    }else if(this.state.difficulty === 'medium'){
+    } else if(this.state.difficulty === 'medium') {
       version = <Medium allCards={this.state.allCards} />
-    }else if(this.state.difficulty === 'hard'){
+    } else if (this.state.difficulty === 'hard'){
       version = <Hard allCards={this.state.allCards} />
     }
     return (
