@@ -5,9 +5,14 @@ class Easy extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: null,
+    //   round: 0,
     };
   }
+
+ handleSubmit = () => {
+    // this.setState({this.state.round});
+    this.props.advanceRound()
+ }
 
   render() {
     return (
@@ -35,7 +40,7 @@ class Easy extends Component {
             <option value="Red">Red</option>
             <option value="Black">Black</option>
           </select>
-          <button className="predict-btn" type="button">
+          <button className="predict-btn" type="button" onClick={this.handleSubmit}>
             Predict
           </button>
         </form>

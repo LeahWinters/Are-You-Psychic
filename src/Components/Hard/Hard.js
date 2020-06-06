@@ -37,7 +37,6 @@ class Hard extends Component {
             <option value="Dimamond">Dimamond</option>
             <option value="Heart">Heart</option>
           </select>
-          <form className="user-prediction-form">
           <select
             alt="Select Your Predicted Card Number"
             name="number"

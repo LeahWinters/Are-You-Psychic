@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage.js";
-import GamePage from "../GamePage/GamePage.js";
+import Easy from "../Easy/Easy.js";
+import Medium from "../Medium/Medium.js";
+import Hard from "../Hard/Hard.js";
 import Header from "../Header/Header.js"
 import { getTenCards } from "../../apiCall";
 
@@ -13,7 +15,8 @@ class App extends Component {
       name: "",
       difficulty: "",
       gameStarted: false,
-      allCards: []
+      allCards: [],
+      round: 0,
     };
   }
 
@@ -25,11 +28,21 @@ class App extends Component {
   componentDidMount = async () => {
     const cards = await getTenCards();
     this.setState({...this.state, allCards: cards});
-    console.log(this.state.allCards)
+  };
+
+  advanceRound = () => {
+    this.state.round++;
   }
 
   render() {
-    console.log(this.state.name, this.state.difficulty, this.state.gameStarted)
+    let version = null
+    if(this.state.difficulty === 'easy'){
+      version = <Easy allCards={this.state.allCards} advanceRound={this.advanceRound}/>
+    }else if(this.state.difficulty === 'medium'){
+      version = <Medium allCards={this.state.allCards} />
+    }else if(this.state.difficulty === 'hard'){
+      version = <Hard allCards={this.state.allCards} />
+    }
     return (
       <div className="App">
         {!this.state.gameStarted ? <Redirect to='/'/> : <Redirect to='/game-page'/>}
@@ -38,8 +51,9 @@ class App extends Component {
             exact path="/game-page"
             component={() => (
               <div className="game-page">
-                <Header playerName={this.state.name} />
-                <GamePage />
+                <Header playerName={this.state.name} round={this.state.round}/>
+                {version}
+
               </div>
             )}
           />

@@ -48,9 +48,9 @@ class LandingPage extends Component {
             onChange={this.handleChange}
             className="select-diff"
           >
-            <option value="Harry Potter">Harry Potter - Easy - Red/Black</option>
-            <option value="The Magicians">The Magicians - Medium - Suits</option>
-            <option value="Hard">HP Love Craft - Hard - Exact Match</option>
+            <option value="easy">Harry Potter - Easy - Red/Black</option>
+            <option value="medium">The Magicians - Medium - Suits</option>
+            <option value="hard">HP Lovecraft - Hard - Exact Match</option>
           </select>
           <Link to={`/game-page`}>
             <button
