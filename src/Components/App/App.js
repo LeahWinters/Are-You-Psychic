@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     let version = null
     if (this.state.difficulty === 'easy') {
-      version = <Easy allCards={this.state.allCards} advanceRound={this.advanceRound}/>
+      version = <Easy allCards={this.state.allCards} advanceRound={this.advanceRound} currentRound={this.state.round}/>
     } else if(this.state.difficulty === 'medium') {
       version = <Medium allCards={this.state.allCards} />
     } else if (this.state.difficulty === 'hard'){

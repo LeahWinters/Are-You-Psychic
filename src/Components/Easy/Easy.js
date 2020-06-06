@@ -5,16 +5,28 @@ class Easy extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    //   round: 0,
+        currentCard: {}
     };
   }
 
- handleSubmit = () => {
-    // this.setState({this.state.round});
+  componentDidMount = () => {
+    this.setUpCard()
+  };
+
+handleSubmit = () => {
     this.props.advanceRound()
  }
 
+
+ setUpCard = async () => {
+    let currentCard = await this.props.allCards.cards[this.props.currentRound];
+    this.setState({currentCard: currentCard}) 
+
+ }
+
+ 
   render() {
+    console.log(this.state.currentCard.code)
     return (
       <div className='easy-game-page'>
         <div className="cards-holder">
@@ -25,7 +37,7 @@ class Easy extends Component {
           </section>
           <section className='card-to-predict-holder'>
             <div className='card-to-predict'>
-
+                {this.state.currentCard.code}
             </div>
           </section>
         </div>
