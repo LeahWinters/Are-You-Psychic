@@ -5,7 +5,9 @@ class Easy extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        currentCard: {}
+      currentCard: {},
+      correctAnswers: 0,
+      guess: "red",
     };
   }
 
@@ -13,24 +15,57 @@ class Easy extends Component {
     this.setUpCard();
   };
 
-handleSubmit = () => {
+  handleSubmit = () => {
     this.props.advanceRound();
- }
+    this.checkCurrentCardColor();
+  };
 
+  handleChange = (e) => {
+    this.setState({ guess: e.target.value });
+  };
 
- setUpCard = async () => {
-    let currentCard = await this.props.allCards.cards[this.props.currentRound];
-    this.setState({currentCard: currentCard}) 
- }
+  setUpCard = () => {
+    let currentCard = this.props.allCards.cards[this.props.currentRound];
+    this.setState({ currentCard: currentCard });
+  };
 
- 
+  checkCurrentCardColor = () => {
+    let currentCardColor;
+    if (
+      this.state.currentCard.suit === "SPADES" ||
+      this.state.currentCard.suit === "CLUBS"
+    ) {
+      currentCardColor = "black";
+      this.checkAnswer(currentCardColor);
+    } else if (
+      this.state.currentCard.suit === "DIAMONDS" ||
+      this.state.currentCard.suit === "HEARTS"
+    ) {
+      currentCardColor = "red";
+      this.checkAnswer(currentCardColor);
+    }
+    console.log(currentCardColor);
+  };
+
+  checkAnswer = (currentCardColor) => {
+    if (currentCardColor === this.state.guess) {
+      this.props.handleCounter();
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  };
+
   render() {
-    console.log(this.state.currentCard.code)
     return (
-      <div className='easy-game-page'>
+      <div className="easy-game-page">
         <div className="cards-holder">
-          <section className='card-to-predict-holder'>
-            <img className='card-to-predict' src={this.state.currentCard.image}/>    
+          <section className="card-to-predict-holder">
+            <img
+              className="card-to-predict"
+              src={this.state.currentCard.image}
+              alt="card-pic"
+            />
           </section>
         </div>
         <form className="user-prediction-form">
@@ -38,17 +73,22 @@ handleSubmit = () => {
             alt="Select your predicted color"
             name="color"
             className="select-color"
-            // value={this.state.difficulty}
-            // onChange={this.handleChange}
+            value={this.state.guess}
+            onChange={this.handleChange}
           >
-            <option value="Red">Red</option>
-            <option value="Black">Black</option>
+            <option value="red">Red</option>
+            <option value="black">Black</option>
           </select>
-          <button className="predict-btn" type="button" onClick={this.handleSubmit}>
+          <button
+            className="predict-btn"
+            type="button"
+            onClick={this.handleSubmit}
+          >
             Predict
           </button>
         </form>
-      </div>);
+      </div>
+    );
   }
 }
 

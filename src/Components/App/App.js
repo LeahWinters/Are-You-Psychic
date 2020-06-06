@@ -5,7 +5,7 @@ import LandingPage from "../LandingPage/LandingPage.js";
 import Easy from "../Easy/Easy.js";
 import Medium from "../Medium/Medium.js";
 import Hard from "../Hard/Hard.js";
-import Header from "../Header/Header.js"
+import Header from "../Header/Header.js";
 import { getTenCards } from "../../apiCall";
 
 class App extends Component {
@@ -17,48 +17,60 @@ class App extends Component {
       gameStarted: false,
       allCards: [],
       round: 0,
+      correctAnswers: 0,
     };
   }
 
   startGame = (name, difficulty) => {
-    this.setState({name, difficulty, gameStarted: true})
-    console.log(this.state.name, this.state.difficulty, this.state.gameStarted)
+    this.setState({ name, difficulty, gameStarted: true });
   };
 
   componentDidMount = async () => {
     const cards = await getTenCards();
-    this.setState({...this.state, allCards: cards});
+    this.setState({ ...this.state, allCards: cards });
   };
 
   advanceRound = () => {
-    this.state.round++;
-    this.forceReRender()
-  }
+    this.setState({ round: this.state.round + 1 });
+  };
 
-  forceReRender = () => {
-    this.setState({...this.state})
-  }
+  handleCounter = () => {
+    const match = this.state.correctAnswers + 1;
+    this.setState({ correctAnswers: match });
+  };
 
   render() {
-    let version = null
-    if (this.state.difficulty === 'easy') {
-      version = <Easy allCards={this.state.allCards} advanceRound={this.advanceRound} currentRound={this.state.round}/>
-    } else if(this.state.difficulty === 'medium') {
-      version = <Medium allCards={this.state.allCards} />
-    } else if (this.state.difficulty === 'hard'){
-      version = <Hard allCards={this.state.allCards} />
+    let version = null;
+    if (this.state.difficulty === "easy") {
+      version = (
+        <Easy
+          allCards={this.state.allCards}
+          advanceRound={this.advanceRound}
+          currentRound={this.state.round}
+          correctCard={this.state.correctCard}
+          handleCounter={this.handleCounter}
+        />
+      );
+    } else if (this.state.difficulty === "medium") {
+      version = <Medium allCards={this.state.allCards} />;
+    } else if (this.state.difficulty === "hard") {
+      version = <Hard allCards={this.state.allCards} />;
     }
     return (
       <div className="App">
-        {!this.state.gameStarted ? <Redirect to='/'/> : <Redirect to='/game-page'/>}
+        {!this.state.gameStarted ? (
+          <Redirect to="/" />
+        ) : (
+          <Redirect to="/game-page" />
+        )}
         <Switch>
           <Route
-            exact path="/game-page"
+            exact
+            path="/game-page"
             component={() => (
               <div className="game-page">
-                <Header playerName={this.state.name} round={this.state.round}/>
+                <Header playerName={this.state.name} round={this.state.round} />
                 {version}
-
               </div>
             )}
           />

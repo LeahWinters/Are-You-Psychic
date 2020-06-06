@@ -27,10 +27,10 @@ class Hard extends Component {
             // value={this.state.difficulty}
             // onChange={this.handleChange}
           >
-            <option value="Spade">Spade</option>
-            <option value="Club">Club</option>
-            <option value="Dimamond">Dimamond</option>
-            <option value="Heart">Heart</option>
+            <option value="Spades">Spades</option>
+            <option value="Clubs">Clubs</option>
+            <option value="Diamonds">Diamonds</option>
+            <option value="Hearts">Hearts</option>
           </select>
           <select
             alt="Select Your Predicted Card Number"
