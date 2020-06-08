@@ -13,11 +13,6 @@ class Hard extends Component {
     return (
       <div className='hard-game-page'>
         <div className="cards-holder">
-          <section className='users-prediction-card-holder'>
-            <div className='users-prediction-card'>
-
-            </div>
-          </section>
           <section className='card-to-predict-holder'>
             <div className='card-to-predict'>
 
@@ -32,12 +27,11 @@ class Hard extends Component {
             // value={this.state.difficulty}
             // onChange={this.handleChange}
           >
-            <option value="Spade">Spade</option>
-            <option value="Club">Club</option>
-            <option value="Dimamond">Dimamond</option>
-            <option value="Heart">Heart</option>
+            <option value="Spades">Spades</option>
+            <option value="Clubs">Clubs</option>
+            <option value="Diamonds">Diamonds</option>
+            <option value="Hearts">Hearts</option>
           </select>
-          <form className="user-prediction-form">
           <select
             alt="Select Your Predicted Card Number"
             name="number"
